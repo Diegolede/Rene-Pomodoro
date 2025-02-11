@@ -1,79 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let timer; // Variable para almacenar el temporizador
-    let timeLeft = 20 * 60; // 15 minutos para el tiempo de trabajo
-    const workDuration = 20 * 60; // Duración del trabajo en segundos
-    const breakDuration = 5 * 60; // Duración del descanso en segundos
-    const timerDisplay = document.querySelector('.timer'); // Seleccionar el elemento del temporizador
-    const playButton = document.getElementById('play'); // Botón de play
-    const pauseButton = document.getElementById('pause'); // Botón de pausa
+    let timer; 
+    let timeLeft = 25 * 60; 
+    const workDuration = 25 * 60; 
+    const breakDuration = 5 * 60; 
+    const timerDisplay = document.querySelector('.timer'); 
+    const playButton = document.getElementById('play'); 
+    const pauseButton = document.getElementById('pause'); 
 
-    // Cargar el audio de notificación
+   
     const notificationSound = new Audio('assets/audio/notification.mp3');
 
-    // Agregar un manejador de errores
+    
     notificationSound.addEventListener('error', (e) => {
         console.error("Error al cargar el audio:", e);
     });
 
-    // Función para actualizar el temporizador
+   
     function updateTimer() {
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
-    // Función para iniciar el temporizador
+    
     function startTimer() {
-        if (!timer) { // Solo iniciar si no hay un temporizador en ejecución
+        if (!timer) { 
             timer = setInterval(() => {
                 if (timeLeft > 0) {
                     timeLeft--;
                     updateTimer();
                 } else {
                     clearInterval(timer);
-                    timer = null; // Reiniciar el temporizador
-                    notificationSound.play(); // Reproducir sonido de notificación
+                    timer = null; 
+                    notificationSound.play(); 
                     alert("¡Tiempo terminado! Ahora es tiempo de descanso.");
-                    startBreak(); // Iniciar el descanso
+                    startBreak(); 
                 }
             }, 1000);
         }
     }
 
-    // Función para iniciar el descanso
+   
     function startBreak() {
-        timeLeft = breakDuration; // Establecer el tiempo de descanso
-        updateTimer(); // Actualizar el temporizador en la pantalla
+        timeLeft = breakDuration; 
+        updateTimer(); 
         timer = setInterval(() => {
             if (timeLeft > 0) {
                 timeLeft--;
                 updateTimer();
             } else {
                 clearInterval(timer);
-                timer = null; // Reiniciar el temporizador
-                notificationSound.play(); // Reproducir sonido de notificación
+                timer = null; 
+                notificationSound.play(); 
                 alert("¡Descanso terminado! Vuelve al trabajo.");
-                timeLeft = workDuration; // Reiniciar el tiempo de trabajo
-                updateTimer(); // Actualizar el temporizador en la pantalla
+                timeLeft = workDuration; 
+                updateTimer(); 
             }
         }, 1000);
     }
 
-    // Función para pausar el temporizador
+   
     function pauseTimer() {
         clearInterval(timer);
-        timer = null; // Reiniciar el temporizador
+        timer = null; 
     }
 
-    // Asignar eventos a los botones
+    
     playButton.addEventListener('click', startTimer);
     pauseButton.addEventListener('click', pauseTimer);
 
-    // Inicializar el temporizador en la pantalla
+    
     updateTimer();
 });
 
-// Función para obtener rutas de GIFs
+
 function obtenerRutasGIFs() {
     return [
         "assets/img/gif1.gif",
@@ -89,10 +89,10 @@ let gifs = obtenerRutasGIFs();
 function cambiarGif() {
     let indice = Math.floor(Math.random() * gifs.length);
     document.getElementById("miGif").src = gifs[indice];
-    console.log("GIF cambiado a:", gifs[indice]); // Verifica qué GIF se está cargando
+    console.log("GIF cambiado a:", gifs[indice]); 
 }
 
-// Asegúrate de que se llame a cambiarGif al cargar la página
+
 window.onload = cambiarGif;
 
 const sonido = new Audio('assets/audio/botonaudio.mp3')
