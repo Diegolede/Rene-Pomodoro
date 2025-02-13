@@ -1,48 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <!--Meta-->
+    <!-- Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Links-->
+    <!-- Links -->
     <link rel="stylesheet" href="assets/style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <!--Favicon-->
+    <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/favicon (1).png" type="image/x-icon">
-    <!--Title-->
+    <!-- Title -->
     <title>Rene Pomodoro</title>
 </head>
 <body>
 
-    <!--Timer-->
-
-    <p class="timer">
+    <!-- Timer -->
+    <p class="timer" aria-live="polite">
         15:00
     </p>
 
-    <!--Gif de Rene-->
-    
+    <!-- Gif de Rene -->
     <div class="img-home">
-        <img id="miGif" src="" alt="">
+        <img id="miGif" src="" alt="GIF de Rene" loading="lazy">
     </div>
 
-    <!--Menu-->
-
-    <div class="menu">
-        <div class="button" id="play">
-            <img src="assets/img/icons/Play.svg" alt="">
+    <!-- Menu -->
+    <nav class="menu" aria-label="Controles del temporizador">
+        <div class="button" id="play-pause" aria-label="Iniciar/Pausar temporizador">
+            <img id="play-pause-icon" src="assets/img/icons/Play.svg" alt="Icono de reproducir">
         </div>
-        <div class="button" id="pause">
-            <img src="assets/img/icons/Pause.svg" alt="">
+        <div class="button" id="work-time" aria-label="Cambiar tiempo de trabajo">
+            <img src="assets/img/icons/reloj.svg" alt="Icono de reloj">
+            <span id="work-time-display" style="display: none;">20</span>
         </div>
-    </div>
+    </nav>
 
-    <!--Script-->
-    <script src="assets/app/app.js"></script>
+    <!-- Script -->
+    <script src="assets/app/app.js" defer></script>
 </body>
 </html>
